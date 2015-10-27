@@ -1,14 +1,21 @@
-"repositories": [
-    {
-        "type": "vcs",
-        "url": "https://github.com/weaverryan/derp-dangerzone"
-    }
-],
 {
     "name": "codermarcel/convinient-controller",
+	"type": "package",
+	"description": "A convinient abstract controller for silex",
+	"keywords": ["silex", "controller"],
+	"homepage": "https://github.com/codermarcel/ConvinientController",
+	"authors": [
+        {
+            "name": "Marcel",
+            "email": "codermarcel@gmail.com",
+        }
+    ],
     "autoload": {
-        "psr-0" : {
+        "psr-4" : {
             "codermarcel\\ConvinientController" : "src"
         }
+    },
+	"require": {
+        "silex/silex": "~1.3"
     }
 }
