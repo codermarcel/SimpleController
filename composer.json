@@ -1,0 +1,8 @@
+{
+    "name": "mc/convinient-controller",
+    "autoload": {
+        "psr-0" : {
+            "Mc\\ConvinientController" : "src"
+        }
+    }
+}
