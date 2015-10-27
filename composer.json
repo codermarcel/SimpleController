@@ -1,8 +1,14 @@
+"repositories": [
+    {
+        "type": "vcs",
+        "url": "https://github.com/weaverryan/derp-dangerzone"
+    }
+],
 {
-    "name": "mc/convinient-controller",
+    "name": "codermarcel/convinient-controller",
     "autoload": {
         "psr-0" : {
-            "Mc\\ConvinientController" : "src"
+            "codermarcel\\ConvinientController" : "src"
         }
     }
 }

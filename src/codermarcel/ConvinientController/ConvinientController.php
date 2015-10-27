@@ -1,5 +1,5 @@
 <?php
-namespace Mc\ConvinientController;
+namespace Codermarcel\ConvinientController;
 
 use Silex\Application;
 use Silex\ControllerProviderInterface;
@@ -8,7 +8,7 @@ use Silex\ControllerProviderInterface;
  * Abstract Convinient-based Reflection Controller for Silex.
  * Based upon -> https://gist.github.com/igorw/4524636
  */
-class AbstractController implements ControllerProviderInterface
+class ConvinientController implements ControllerProviderInterface
 {
 	/**
 	 * You might want to know about some of the arrays here..
