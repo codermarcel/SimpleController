@@ -1,5 +1,5 @@
 <?php
-namespace SimpleController;
+namespace Codermarcel\SimpleController;
 
 use Silex\Application;
 use Silex\ControllerProviderInterface;
