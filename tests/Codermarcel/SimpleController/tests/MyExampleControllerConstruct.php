@@ -1,12 +1,12 @@
 <?php
 
-namespace SimpleController\Tests;
+namespace Codermarcel\SimpleController\Tests;
 
 use Silex\Application;
-use SimpleController\SimpleController;
-use SimpleController\Tests\BaseController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use Codermarcel\SimpleController\SimpleController;
+use Codermarcel\SimpleController\Tests\BaseController;
 
 class MyExampleControllerConstruct
 {

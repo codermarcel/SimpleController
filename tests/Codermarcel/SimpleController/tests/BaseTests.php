@@ -1,9 +1,9 @@
 <?php
 
-namespace SimpleController\Tests;
+namespace Codermarcel\SimpleController\Tests;
 
-use SimpleController\SimpleController;
-use SimpleController\Tests\MyExampleController;
+use Codermarcel\SimpleController\SimpleController;
+use Codermarcel\SimpleController\Tests\MyExampleController;
 use Silex\WebTestCase;
 
 abstract class BaseTests extends WebTestCase

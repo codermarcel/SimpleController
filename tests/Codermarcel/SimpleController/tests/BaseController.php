@@ -1,6 +1,6 @@
 <?php
 
-namespace SimpleController\Tests;
+namespace Codermarcel\SimpleController\Tests;
 
 use Silex\Application;
 use SimpleController\SimpleController;
