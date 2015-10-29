@@ -1,6 +1,10 @@
 # SimpleController
-Convinient and simple silex controller using reflection
+Convenient and simple silex controller using reflection
 Inspired by https://gist.github.com/igorw/4524636
+
+# Introduction
+
+SimpleController is a conv
 
 #Installation
 
@@ -62,3 +66,27 @@ $app->mount('/', new Codermarcel\SimpleController\SimpleController('App\Controll
 
 #Usage
 
+
+
+```php
+use Codermarcel\SimpleController\SimpleController;;
+
+class MyExampleControllerExtended extends SimpleController
+{
+	/**
+	 * Index example
+	 */
+	public function getIndex()
+	{
+		return echo 'Welcome!';
+	}
+	
+	/**
+	 * Index example
+	 */
+	public function getIndex()
+	{
+		return echo 'Welcome!';
+	}
+}
+```
