@@ -6,7 +6,7 @@ Convinient and simple silex controller using reflection
 Run the following command:
 
 ```shell
-composer require _name_
+composer require codermarcel/simple-controller
 ```
 
 #Usage
@@ -16,7 +16,7 @@ composer require _name_
 **Extending the SimpleController**
 
 ```php
-use SimpleController\SimpleController;;
+use Codermarcel\SimpleController\SimpleController;;
 
 class MyExampleControllerExtended extends SimpleController
 {
