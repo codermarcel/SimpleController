@@ -34,7 +34,7 @@ class MyExampleControllerExtended extends SimpleController
 **Mount the route**
 
 ```php
-$app->mount('/', new MyExampleControllerExtended());
+$app->mount('/', new App\Controllers\MyExampleControllerExtended());
 ```
 
 ## Setup - 2
