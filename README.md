@@ -38,7 +38,7 @@ $app->mount('/', new MyExampleControllerExtended());
 
 ## Setup - 2
 
-**Using the raw class**
+**Using a raw class**
 
 ```php
 class MyExampleControllerRaw
