@@ -184,10 +184,12 @@ class MyExampleControllerRaw
 ```
 
 
-
 **Named routes**
 
 You can bind a route name to your routes by using the $bind parameter in your routes like so:
+
+References:
+    [1] http://silex.sensiolabs.org/doc/usage.html#named-routes
 
 ```php
 class MyExampleControllerRaw
