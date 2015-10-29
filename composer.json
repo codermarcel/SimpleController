@@ -1,9 +1,9 @@
 {
     "name": "codermarcel/simple-controller",
 	"type": "package",
-	"description": "A convinient abstract controller for silex",
+	"description": "Convinient and simple silex controller using reflection",
 	"keywords": ["silex", "controller"],
-	"homepage": "https://github.com/codermarcel/ConvinientController",
+    "license": "MIT",
 	"authors": [
 		{
 			"name": "Marcel",
