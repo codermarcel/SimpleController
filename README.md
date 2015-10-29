@@ -16,7 +16,7 @@ composer require _name_
 **Extending the SimpleController**
 
 ```php
-use _name_;
+use SimpleController\SimpleController;;
 
 class MyExampleControllerExtended extends SimpleController
 {
