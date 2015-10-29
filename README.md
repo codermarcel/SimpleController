@@ -1,5 +1,6 @@
 # SimpleController
 Convinient and simple silex controller using reflection
+Inspired by https://gist.github.com/igorw/4524636
 
 #Installation
 
