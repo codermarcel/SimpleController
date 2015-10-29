@@ -64,6 +64,28 @@ abstract class BaseTests extends WebTestCase
 	}
 
 	/**
+	 * Test the PATCH method
+	 */
+	public function testPatchMethod()
+	{
+		$client = $this->createClient();
+		$crawler = $client->request('PATCH', '/test');
+		$result = $client->getResponse()->getContent();
+		$this->assertEquals('PATCH', $result);
+	}
+
+	/**
+	 * Test the OPTIONS method
+	 */
+	public function testOptionsMethod()
+	{
+		$client = $this->createClient();
+		$crawler = $client->request('OPTIONS', '/test');
+		$result = $client->getResponse()->getContent();
+		$this->assertEquals('OPTIONS', $result);
+	}
+
+	/**
 	 * Test the MATCH method
 	 */
 	public function testMatchMethod()

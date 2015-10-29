@@ -74,22 +74,16 @@ $app->mount('/', new Codermarcel\SimpleController\SimpleController('App\Controll
 
 **HTTP methods**
 
-You can use any of the available HTTP methods that you can use with silex,
-the following methods are available
+The method names should begin with the HTTP verb they respond to followed by the title case version of the URI.
+The following methods are available :
 
 - get
 - post
 - put
 - delete
+- patch
+- options
 - match
-
-Just prefix your controller method name with one of the http method names and SimpleController will
-create the route for you like so:
-
-References:
-
-	[1] http://silex.sensiolabs.org/doc/usage.html#other-methods
-
 
 ```php
 class MyExampleControllerRaw
@@ -157,9 +151,6 @@ class MyExampleControllerRaw
 
 You can define variable parts in a route like this:
 
-References:
-
-    [1] http://silex.sensiolabs.org/doc/usage.html#route-variables
 
 ```php
 class MyExampleControllerRaw
@@ -180,9 +171,6 @@ class MyExampleControllerRaw
 You can also ask for the current Request and Application objects like this:
 Note for the Application and Request objects, SimpleController does the injection based on the type hinting and not on the variable name!
 
-References:
-
-    [1] http://silex.sensiolabs.org/doc/usage.html#route-variables
 
 ```php
 class MyExampleControllerRaw
@@ -207,9 +195,6 @@ class MyExampleControllerRaw
 
 You can bind a route name to your routes by using the $bind parameter in your routes like so:
 
-References:
-
-    [1] http://silex.sensiolabs.org/doc/usage.html#named-routes
 
 ```php
 class MyExampleControllerRaw
@@ -230,3 +215,10 @@ class MyExampleControllerRaw
 	}
 }
 ```
+
+References:
+
+	[1] http://silex.sensiolabs.org/doc/usage.html#other-methods
+    [2] http://silex.sensiolabs.org/doc/usage.html#route-variables
+    [3] http://silex.sensiolabs.org/doc/usage.html#route-variables
+    [4] http://silex.sensiolabs.org/doc/usage.html#named-routes

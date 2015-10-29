@@ -10,8 +10,7 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 trait BaseController
 {
 	/**
-	 * Index example
-	 * Routes to /
+	 * Responds to request to GET /
 	 */
 	public function getIndex()
 	{
@@ -19,8 +18,7 @@ trait BaseController
 	}
 
 	/**
-	 * GET example
-	 * Routes to /test
+	 * Responds to request to GET /test
 	 */
 	public function getTest()
 	{
@@ -28,8 +26,7 @@ trait BaseController
 	}
 
 	/**
-	 * Post example
-	 * Routes to /test
+	 * Responds to request to POST /test
 	 */
 	public function postTest()
 	{
@@ -37,8 +34,7 @@ trait BaseController
 	}
 
 	/**
-	 * Put example
-	 * Routes to /test
+	 * Responds to request to PUT /test
 	 */
 	public function putTest()
 	{
@@ -46,8 +42,7 @@ trait BaseController
 	}
 
 	/**
-	 * Delete example
-	 * Routes to /test
+	 * Responds to request to DELETE /test
 	 */
 	public function deleteTest()
 	{
@@ -55,8 +50,23 @@ trait BaseController
 	}
 
 	/**
-	 * Match example
-	 * Routes to /test
+	 * Responds to request to PATCH /test
+	 */
+	public function patchTest()
+	{
+		return new Response('PATCH');
+	}
+
+	/**
+	 * Responds to request to OPTIONS /test
+	 */
+	public function optionsTest()
+	{
+		return new Response('OPTIONS');
+	}
+
+	/**
+	 * Responds to request to ANYTHING on /test
 	 */
 	public function matchTest()
 	{
@@ -65,7 +75,7 @@ trait BaseController
 
 	/**
 	 * Post with two parameters example
-	 * Routes to /login{username}/{password}
+	 * Responds to request to POST /login{username}/{password}
 	 */
 	public function postLogin($username, $password)
 	{
@@ -74,7 +84,7 @@ trait BaseController
 
 	/**
 	 * Example of Parameter injection
-	 * Routes to /injection
+	 * Responds to request to GET /injection
 	 */
 	public function getInjection(Application $app, Request $request)
 	{
@@ -83,8 +93,7 @@ trait BaseController
 	}
 
 	/**
-	 * Example of binding a name to a route
-	 * Routes to /bind-example
+	 * Responds to request to GET /bind-example
 	 *
 	 * {@link http://silex.sensiolabs.org/doc/providers/url_generator.html#usage}
 	 */
@@ -95,8 +104,7 @@ trait BaseController
 	}
 
 	/**
-	 * Route that triggers the before middleware
-	 * Routes to /before-middleware
+	 * Responds to request to GET /before-middleware
 	 */
 	public function getBeforeMiddleware()
 	{
@@ -104,8 +112,7 @@ trait BaseController
 	}
 
 	/**
-	 * Route that triggers the after middleware
-	 * Routes to /after-middleware
+	 * Responds to request to GET /after-middleware
 	 */
 	public function getAfterMiddleware()
 	{
