@@ -12,10 +12,6 @@ composer require codermarcel/simple-controller
 
 #Setup
 
-SimpleController has two simple methods to use.
-You can either extend the SimpleController class, or use a raw class and mount it using the SimpleController class
-See below for more details
-
 ## Method - 1
 
 **Extending the SimpleController**
