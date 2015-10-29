@@ -11,14 +11,14 @@ composer require _name_
 
 #Usage
 
-## Setup
+## Setup - 1
 
 **Extending the SimpleController**
 
 ```php
 use _name_;
 
-class MyExampleController extends SimpleController
+class MyExampleControllerExtended extends SimpleController
 {
 	/**
 	 * Index example
@@ -28,4 +28,35 @@ class MyExampleController extends SimpleController
 		return echo 'Welcome!';
 	}
 }
+```
+
+**Mount the route**
+
+```php
+$app->mount('/', new MyExampleControllerExtended());
+```
+
+## Setup - 2
+
+**Using the raw class**
+
+```php
+class MyExampleControllerRaw
+{
+	/**
+	 * Index example
+	 */
+	public function getIndex()
+	{
+		return echo 'Welcome!';
+	}
+}
+```
+
+**Mount the route**
+
+```php
+use SimpleController\SimpleController;
+
+$app->mount('/', new SimpleController('MyExampleControllerRaw'));
 ```
