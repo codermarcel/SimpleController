@@ -3,7 +3,6 @@
 namespace Codermarcel\SimpleController\Tests;
 
 use Silex\Application;
-use SimpleController\SimpleController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
@@ -11,7 +10,17 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 trait BaseController
 {
 	/**
+	 * Index example
+	 * Routes to /
+	 */
+	public function getIndex()
+	{
+		return new Response('INDEX');
+	}
+
+	/**
 	 * GET example
+	 * Routes to /test
 	 */
 	public function getTest()
 	{
@@ -20,6 +29,7 @@ trait BaseController
 
 	/**
 	 * Post example
+	 * Routes to /test
 	 */
 	public function postTest()
 	{
@@ -28,6 +38,7 @@ trait BaseController
 
 	/**
 	 * Put example
+	 * Routes to /test
 	 */
 	public function putTest()
 	{
@@ -36,6 +47,7 @@ trait BaseController
 
 	/**
 	 * Delete example
+	 * Routes to /test
 	 */
 	public function deleteTest()
 	{
@@ -44,6 +56,7 @@ trait BaseController
 
 	/**
 	 * Match example
+	 * Routes to /test
 	 */
 	public function matchTest()
 	{
@@ -51,15 +64,28 @@ trait BaseController
 	}
 
 	/**
-	 * Index example
+	 * Post with two parameters example
+	 * Routes to /login{username}/{password}
 	 */
-	public function getIndex()
+	public function postLogin($username, $password)
 	{
-		return new Response('INDEX');
+		return sprintf('Trying to log in with username: %s and password: %s', $username, $password);
+	}
+
+	/**
+	 * Example of Parameter injection
+	 * Routes to /injection
+	 */
+	public function getInjection(Application $app, Request $request)
+	{
+		$app['injection_test'] = true;
+		return new Response($request->getRequestUri());
 	}
 
 	/**
 	 * Example of binding a name to a route
+	 * Routes to /bind-example
+	 *
 	 * {@link http://silex.sensiolabs.org/doc/providers/url_generator.html#usage}
 	 */
 	public function getBindExample(Application $app, $bind = 'bind_example')
@@ -69,15 +95,8 @@ trait BaseController
 	}
 
 	/**
-	 * Post with two parameters example
-	 */
-	public function postLogin($username, $password)
-	{
-		return sprintf('Trying to log in with username: %s and password: %s', $username, $password);
-	}
-
-	/**
 	 * Route that triggers the before middleware
+	 * Routes to /before-middleware
 	 */
 	public function getBeforeMiddleware()
 	{
@@ -86,6 +105,7 @@ trait BaseController
 
 	/**
 	 * Route that triggers the after middleware
+	 * Routes to /after-middleware
 	 */
 	public function getAfterMiddleware()
 	{
