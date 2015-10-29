@@ -56,7 +56,7 @@ class MyExampleControllerRaw
 **Mount the route**
 
 ```php
-use SimpleController\SimpleController;
+use Codermarcel\SimpleController\SimpleController;
 
 $app->mount('/', new SimpleController('MyExampleControllerRaw'));
 ```
