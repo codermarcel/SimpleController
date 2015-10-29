@@ -13,19 +13,19 @@ composer require _name_
 
 ## Setup
 
-**Humanize**
+**Extending the SimpleController**
 
 ```php
 use _name_;
 
-class MyExampleControllerExtend extends SimpleController
+class MyExampleController extends SimpleController
 {
 	/**
-	 * GET example
+	 * Index example
 	 */
-	public function getTest()
+	public function getIndex()
 	{
-		return new Response('GET');
+		return echo 'Welcome!';
 	}
 }
 ```
