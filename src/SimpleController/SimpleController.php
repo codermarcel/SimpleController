@@ -27,6 +27,10 @@ class SimpleController implements ControllerProviderInterface
     private $collection;
     private $whitelist = ['bind' ,'Silex\Application', 'Symfony\Component\HttpFoundation\Request'];
 
+    /**
+     * @param stdClass $class
+     * @return void
+     */
     function __construct($class = null)
     {
         $this->class = is_null($class) ? get_called_class() : $class;
@@ -34,6 +38,7 @@ class SimpleController implements ControllerProviderInterface
 
     /**
      * The magic happens in here
+     * @return void
      */
     function connect(Application $app)
     {
@@ -103,7 +108,8 @@ class SimpleController implements ControllerProviderInterface
 
     /**
      * Get the 'bind' name which is passed as a parameter to the controller method
-     * @param mixed $parameters  the method parameters to check for the bind value/name
+     * @param mixed $parameters  the method parameters to check for the bind name
+     * @return string
      */
     private function getBindValue($arguments)
     {
@@ -113,6 +119,7 @@ class SimpleController implements ControllerProviderInterface
     /**
      * Get the parameter value of a specified parameter name
      * @param mixed $parameters  the method parameters to check for the priority value
+     * @return mixed string|$default
      */
     private function getValue($name, $arguments, $default = null)
     {
@@ -170,5 +177,4 @@ class SimpleController implements ControllerProviderInterface
 
         return $path;
     }
-
 }
