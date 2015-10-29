@@ -11,9 +11,9 @@
 		}
     ],
     "autoload": {
-        "psr-0": {
-            "Codermarcel\\SimpleController": "src",
-            "Codermarcel\\SimpleController\\Tests\\": "tests"
+        "psr-4": {
+            "Codermarcel\\SimpleController\\": "src/",
+            "Codermarcel\\SimpleController\\Tests\\": "tests/"
         }
     },
 	"require": {
