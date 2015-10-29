@@ -1,24 +1,31 @@
 <?php
-namespace Codermarcel\ConvinientController;
+namespace SimpleController;
 
 use Silex\Application;
 use Silex\ControllerProviderInterface;
 
 /**
- * Abstract Convinient-based Reflection Controller for Silex.
- * Based upon -> https://gist.github.com/igorw/4524636
+ * Convinient and simple silex controller using reflection
+ * Inspired by -> {@link https://gist.github.com/igorw/4524636}
  */
-class ConvinientController implements ControllerProviderInterface
+class SimpleController implements ControllerProviderInterface
 {
 	/**
-	 * You might want to know about some of the arrays here..
+	 * Supported SimpleController methods
+     * @var const
 	 */
+    const ROUTE_METHOD_GET = 'get';
+    const ROUTE_METHOD_POST = 'post';
+    const ROUTE_METHOD_PUT = 'put';
+    const ROUTE_METHOD_DELETE = 'delete';
+    const ROUTE_METHOD_MATCH = 'match';
+    const MIDDLEWARE_METHOD_BEFORE = 'before';
+    const MIDDLEWARE_METHOD_AFTER = 'after';
+
+    private $app;
     private $class;
     private $collection;
-    private $whitelist_class = ['Silex\Application', 'Symfony\Component\HttpFoundation\Request'];
-    private $custom_args = ['bind', 'priority'];
-    private $middleware_methods = ['before', 'after', 'finish'];
-    private $route_methods = ['get', 'post', 'put', 'delete', 'match'];
+    private $whitelist = ['bind' ,'Silex\Application', 'Symfony\Component\HttpFoundation\Request'];
 
     function __construct($class = null)
     {
@@ -34,10 +41,11 @@ class ConvinientController implements ControllerProviderInterface
         $reflector = new \ReflectionClass($this->class);
         $methods = $reflector->getMethods(\ReflectionMethod::IS_PUBLIC);
 
-        foreach ($methods as $method) {
+        foreach ($methods as $method)
+        {
             $methodName = $method->getName();
 
-            if (!preg_match('/^(get|post|put|delete|match|before|after|finish)(.+)$/', $methodName, $matches)) {
+            if (!preg_match('/^(get|post|put|delete|match|before|after)(.+)$/', $methodName, $matches)) {
                 continue;
             }
 
@@ -46,51 +54,31 @@ class ConvinientController implements ControllerProviderInterface
             $collection_method = $matches[1];
             $collection_route = $this->adjustRoute($parameters, $matches[2]);
 
-				if ($this->isMiddleware($collection_method))
-                {
-                    $this->addMiddleware($collection_method, $collection_class, $this->getPriorityValue($parameters));
-                }else {
-                    $this->addRoute($collection_method, $collection_class, $collection_route, $this->getBindValue($parameters));
-                }
-	        }
+			if ($this->isMiddleware($collection_method))
+            {
+                $this->collection->$collection_method($collection_class);
+            }else {
+                $this->addRoute($collection_method, $collection_class, $collection_route, $this->getBindValue($parameters));
+            }
+	    }
 
         return $this->collection;
     }
 
     /**
-     * Checks whether or not the method is a middleware or not ( before|after|finish )
+     * Checks whether or not the method is a middleware or not ( before|after )
      *
      * @param mixed $method  the method to check
      * @return boolean true|false
      */
     private function isMiddleware($method)
     {
-        if ($method === 'before' || $method === 'after' || $method === 'finish')
+        if ($method === self::MIDDLEWARE_METHOD_BEFORE || $method === self::MIDDLEWARE_METHOD_AFTER)
         {
             return true;
         }
 
         return false;
-    }
-
-    /**
-     * Add a middleware to the collection
-     *
-     * for some reason passing the priority as the second argument doesn't change the execution
-     * order and i am not sure why. http://silex.sensiolabs.org/doc/middlewares.html
-     *
-     * @param mixed $method  the method of the route 					 (example : get|post|put|delete|match)
-     * @param mixed $class   the class and method name to call 			 (example : App\Controllers\ControllerName::postLogin)
-     */
-    private function addMiddleware($method, $class, $priority = null)
-    {
-        if (is_null($priority))
-        {
-            $this->collection->$method($class);
-        }else {
-            $this->collection->$method($class);
-            //$this->collection->$method($class, $priority);
-        }
     }
 
     /**
@@ -123,15 +111,6 @@ class ConvinientController implements ControllerProviderInterface
     }
 
     /**
-     * Get the 'priority' value which is passed as a parameter to the controller method
-     * @param mixed $parameters  the method parameters to check for the priority value
-     */
-    private function getPriorityValue($arguments)
-    {
-        return $this->getValue('priority', $arguments);
-    }
-
-    /**
      * Get the parameter value of a specified parameter name
      * @param mixed $parameters  the method parameters to check for the priority value
      */
@@ -139,7 +118,7 @@ class ConvinientController implements ControllerProviderInterface
     {
         foreach($arguments as $arg)
         {
-            if ($arg->name === $arg)
+            if ($arg->name === $name)
             {
                 return $arg->getDefaultValue();
             }
@@ -149,24 +128,41 @@ class ConvinientController implements ControllerProviderInterface
     }
 
     /**
-     * adjust the route based on the input arguments
+     * Convert a string to snake case.
+     *
+     * @param  string  $value
+     * @param  string  $delimiter
+     * @return string
+     */
+    private function getSnakeCase($value, $delimiter = '_')
+    {
+        if (! ctype_lower($value)) {
+            $value = strtolower(preg_replace('/(.)(?=[A-Z])/', '$1'.$delimiter, $value));
+
+            $value = preg_replace('/\s+/', '', $value);
+        }
+
+        return $value;
+    }
+
+    /**
+     * Adjust the route based on the input arguments
 	 *
 	 * @param mixed $arguments  the arguments to check for
 	 * @param mixed $path 		the path that needs to be adjusted to a route
-	 *
 	 * @return string 			the route that was generated based on the input arguments and path
      */
     private function adjustRoute($arguments, $path)
     {
-        $path = lcfirst($path);
+        $path = $this->getSnakeCase($path, '-');
         $path = ('index' === $path) ? '' : $path;
         $path = '/'.$path;
 
         foreach($arguments as $arg)
         {
-            $name = !is_null($arg->getClass()) ? $arg->getClass()->getName() : null;
+            $name = !is_null($arg->getClass()) ? $arg->getClass()->getName() : $arg->getName();
 
-            if (!in_array($name, $this->whitelist_class))
+            if (!in_array($name, $this->whitelist))
             {
                 $path = $path . '/{' . $arg->name . '}';
             }
