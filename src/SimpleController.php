@@ -5,7 +5,7 @@ use Silex\Application;
 use Silex\ControllerProviderInterface;
 
 /**
- * Convinient and simple silex controller using reflection
+ * Convenient and simple silex controller using reflection
  * Inspired by -> {@link https://gist.github.com/igorw/4524636}
  */
 class SimpleController implements ControllerProviderInterface
