@@ -10,9 +10,13 @@ Run the following command:
 composer require codermarcel/simple-controller
 ```
 
-#Usage
+#Setup
 
-## Setup - 1
+SimpleController has two simple methods to use.
+You can either extend the SimpleController class, or use a raw class and mount it using the SimpleController class
+See below for more details
+
+## Method - 1
 
 **Extending the SimpleController**
 
@@ -37,7 +41,7 @@ class MyExampleControllerExtended extends SimpleController
 $app->mount('/', new App\Controllers\MyExampleControllerExtended());
 ```
 
-## Setup - 2
+## Method - 2
 
 **Using a raw class**
 
@@ -54,8 +58,11 @@ class MyExampleControllerRaw
 }
 ```
 
-**Mount the route**
+**Mount the route** (use the full namespace name for your controller class)
 
 ```php
 $app->mount('/', new Codermarcel\SimpleController\SimpleController('App\Controllers\MyExampleControllerRaw'));
 ```
+
+#Usage
+
