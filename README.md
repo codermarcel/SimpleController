@@ -9,7 +9,7 @@
 SimpleController is a convenient reflection based controller that
 matches your controller methods to routes take a look at
 [laravels implicit-controllers] (http://laravel.com/docs/5.1/controllers#implicit-controllers)
-to see more info about it.
+to see more infos
 
 
 
