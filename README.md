@@ -244,7 +244,7 @@ class MyExampleControllerRaw
 
 ### Named routes
 
-You can bind a route name to your routes by using the $bind parameter in your routes like this:
+You can bind a route name to your routes by using the **$bind** parameter in your routes like this:
 
 For more information on named route and the UrlGeneratorServiceProvider please take a look at the [offical silex documentation] (http://silex.sensiolabs.org/doc/providers/url_generator.html#urlgeneratorserviceprovider)
 
