@@ -1,7 +1,7 @@
 #SimpleController
 
-SimpleController is a convenient reflection based controller for the php micro-framework [silex] (http://silex.sensiolabs.org/)
-SimpleController matches your controller methods to routes. </br>
+SimpleController is a convenient reflection based controller for the [php micro-framework silex] (http://silex.sensiolabs.org/)
+SimpleController makes it easy for you to use controllers in your silex applications and matches your controller methods to routes automatically</br>
 
 
 #Installation
