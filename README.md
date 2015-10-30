@@ -269,9 +269,10 @@ class MyExampleControllerRaw
 
 ## Middleware
 
-"Silex allows you to run code, that changes the default Silex behavior, at different stages during the handling of a request through middlewares: </br>
-[…] </br>
-Route middlewares are triggered when their associated route is matched." </br>
+< Silex allows you to run code, that changes the default Silex behavior, at different stages during the handling of a request through middlewares: </br>
+< […] </br>
+< Route middlewares are triggered when their associated route is matched. </br>
+
 For more information about middlewares, please take a look at the offical [silex documentation] (http://silex.sensiolabs.org/doc/middlewares.html#middlewares) </br>
 
 **Note** You can typehint the Request, Response or Application object and **silex** will inject them for you.
