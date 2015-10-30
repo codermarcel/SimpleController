@@ -7,8 +7,8 @@
 #Introduction
 
 SimpleController is a convenient reflection based controller that
-matches your controller methods to routes take a look at
-[laravels implicit-controllers] (http://laravel.com/docs/5.1/controllers#implicit-controllers)
+matches your controller methods to routes. </br>
+Take a look at [laravels implicit-controllers] (http://laravel.com/docs/5.1/controllers#implicit-controllers)
 to see more infos
 
 
@@ -77,7 +77,7 @@ $app->mount('/', new Codermarcel\SimpleController\SimpleController('App\Controll
 
 ## HTTP methods
 
-The method names should begin with the HTTP verb they respond to followed by the title case version of the URI.
+The method names should begin with the HTTP verb they respond to followed by the title case version of the URI. </br>
 The following methods are available :
 
 - get
@@ -179,8 +179,8 @@ class MyExampleControllerRaw
 
 ### Request and Application injection
 
-You can also ask for the current Request and Application objects like this:
-Note for the Application and Request objects, SimpleController does the injection based on the type hinting and not on the variable name!
+You can also ask for the current Request and Application objects like this:</br>
+Note : for the Application and Request objects, SimpleController does the injection based on the type hinting and not on the variable name! </br>
 
 
 ```php
@@ -204,7 +204,7 @@ class MyExampleControllerRaw
 
 ### Named routes
 
-You can bind a route name to your routes by using the $bind parameter in your routes like so:
+You can bind a route name to your routes by using the $bind parameter in your routes like this:
 
 
 ```php
@@ -231,12 +231,12 @@ class MyExampleControllerRaw
 
 ## Middleware
 
-"Silex allows you to run code, that changes the default Silex behavior, at different stages during the handling of a request through middlewares:
-
-[…]
-Route middlewares are triggered when their associated route is matched."
-
-For more information about middleware, please go to the [silex website] (http://silex.sensiolabs.org/doc/middlewares.html#middlewares)
+"Silex allows you to run code, that changes the default Silex behavior, at different stages during the handling of a request through middlewares: </br>
+</br>
+[…] </br>
+Route middlewares are triggered when their associated route is matched." </br>
+</br>
+For more information about middleware, please go to the [silex website] (http://silex.sensiolabs.org/doc/middlewares.html#middlewares) </br>
 
 ```php
 class MyExampleControllerRaw
