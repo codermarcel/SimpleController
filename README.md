@@ -149,7 +149,6 @@ use Codermarcel\SimpleController\SimpleController;;
 class MyExampleControllerExtended extends SimpleController
 {
 	/**
-	 * Post with two parameters example
 	 * Responds to request to GET /
 	 */
 	public function getIndex()
@@ -158,7 +157,6 @@ class MyExampleControllerExtended extends SimpleController
 	}
 
 	/**
-	 * Post with two parameters example
 	 * Responds to request to GET /login-page
 	 */
 	public function getLoginPage()
@@ -180,7 +178,6 @@ use Codermarcel\SimpleController\SimpleController;;
 class MyExampleControllerExtended extends SimpleController
 {
 	/**
-	 * Post with two parameters example
 	 * Responds to request to GET /user/
 	 */
 	public function getIndex()
@@ -189,7 +186,6 @@ class MyExampleControllerExtended extends SimpleController
 	}
 
 	/**
-	 * Post with two parameters example
 	 * Responds to request to GET /user/home-page
 	 */
 	public function getHomePage()
@@ -209,7 +205,6 @@ You can define variable parts in a route like this:
 class MyExampleControllerRaw
 {
 	/**
-	 * Post with two parameters example
 	 * Responds to request to POST /login{username}/{password}
 	 */
 	public function postLogin($username, $password)
@@ -232,7 +227,6 @@ class MyExampleControllerRaw
 	use Symfony\Component\HttpFoundation\Request;
 
 	/**
-	 * Example of Parameter injection
 	 * Responds to requests to GET /injection
 	 */
 	public function getInjection(Application $app, Request $request)
@@ -256,7 +250,6 @@ class MyExampleControllerRaw
 	use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 	/**
-	 * Example of binding a name to a route
 	 * Responds to requests to GET /bind-example
 	 *
 	 * {@link http://silex.sensiolabs.org/doc/providers/url_generator.html#usage}
