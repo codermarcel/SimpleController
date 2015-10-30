@@ -67,7 +67,7 @@ class MyExampleControllerRaw
 
 ### Mount the route
 
-Note : use the full namespace name for your controller class
+**Note** use the full namespace name for your controller class
 
 ```php
 $app->mount('/', new Codermarcel\SimpleController\SimpleController('App\Controllers\MyExampleControllerRaw'));
@@ -180,7 +180,7 @@ class MyExampleControllerRaw
 ### Request and Application injection
 
 You can also ask for the current Request and Application objects like this:</br>
-##### Note : for the Application and Request objects, SimpleController does the injection based on the type hinting and not on the variable name!** </br>
+**Note** for the Application and Request objects, SimpleController does the injection based on the type hinting and not on the variable name! </br>
 
 
 ```php
