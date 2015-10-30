@@ -265,7 +265,7 @@ class MyExampleControllerRaw
 
 ## Credits
 SimpleController was inspired by </br>
-Inspired by https://gist.github.com/igorw/4524636 </br>
+https://gist.github.com/igorw/4524636 </br>
 And http://laravel.com/docs/5.1/controllers#implicit-controllers </br>
 
 ## References:
