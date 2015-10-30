@@ -88,29 +88,29 @@ The following methods are available :
 ```php
 class MyExampleControllerRaw
 {
-	/**
-	 * Responds to requests to GET /
-	 */
-	public function getIndex()
-	{
-		//
-	}
+		/**
+		 * Responds to requests to GET /
+		 */
+		public function getIndex()
+		{
+			//
+		}
 
-	/**
-	 * Responds to requests to GET /test
-	 */
-	public function getTest()
-	{
-		//
-	}
+		/**
+		 * Responds to requests to GET /test
+		 */
+		public function getTest()
+		{
+			//
+		}
 
-	/**
+		/**
      * Responds to requests to GET /show/{id}
      */
-    public function getShow($id)
+  	public function getShow($id)
     {
         //
-    }
+  	}
 
     /**
      * Responds to requests to GET /admin-profile
