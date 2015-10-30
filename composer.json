@@ -12,7 +12,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "Codermarcel\\SimpleController\\": "src/",
+            "Codermarcel\\SimpleController\\": "src/"
         }
     },
     "autoload-dev": {
