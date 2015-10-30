@@ -1,4 +1,5 @@
 <?php
+
 namespace Codermarcel\SimpleController;
 
 use Silex\Application;
@@ -6,14 +7,15 @@ use Silex\ControllerProviderInterface;
 
 /**
  * Convenient and simple silex controller using reflection
- * Inspired by -> {@link https://gist.github.com/igorw/4524636}
+ * Inspired by -> {@link https://gist.github.com/igorw/4524636}.
  */
 class SimpleController implements ControllerProviderInterface
 {
-	/**
-	 * Supported SimpleController methods
+    /**
+     * Supported SimpleController methods.
+     *
      * @var const
-	 */
+     */
     const ROUTE_METHOD_GET = 'get';
     const ROUTE_METHOD_POST = 'post';
     const ROUTE_METHOD_PUT = 'put';
@@ -29,25 +31,22 @@ class SimpleController implements ControllerProviderInterface
 
     /**
      * @param stdClass $class
-     * @return void
      */
-    function __construct($class = null)
+    public function __construct($class = null)
     {
         $this->class = is_null($class) ? get_called_class() : $class;
     }
 
     /**
-     * The magic happens in here
-     * @return void
+     * The magic happens in here.
      */
-    function connect(Application $app)
+    public function connect(Application $app)
     {
         $this->collection = $app['controllers_factory'];
         $reflector = new \ReflectionClass($this->class);
         $methods = $reflector->getMethods(\ReflectionMethod::IS_PUBLIC);
 
-        foreach ($methods as $method)
-        {
+        foreach ($methods as $method) {
             $methodName = $method->getName();
 
             if (!preg_match('/^(get|post|put|delete|patch|options|match|before|after)(.+)$/', $methodName, $matches)) {
@@ -55,31 +54,30 @@ class SimpleController implements ControllerProviderInterface
             }
 
             $parameters = $reflector->getMethod($methodName)->getParameters();
-            $collection_class = $this->class . '::' . $matches[0];
+            $collection_class = $this->class.'::'.$matches[0];
             $collection_method = $matches[1];
             $collection_route = $this->adjustRoute($parameters, $matches[2]);
 
-			if ($this->isMiddleware($collection_method))
-            {
+            if ($this->isMiddleware($collection_method)) {
                 $this->collection->$collection_method($collection_class);
-            }else {
+            } else {
                 $this->addRoute($collection_method, $collection_class, $collection_route, $this->getBindValue($parameters));
             }
-	    }
+        }
 
         return $this->collection;
     }
 
     /**
-     * Checks whether or not the method is a middleware or not ( before|after )
+     * Checks whether or not the method is a middleware or not ( before|after ).
      *
-     * @param mixed $method  the method to check
-     * @return boolean true|false
+     * @param mixed $method the method to check
+     *
+     * @return bool true|false
      */
     private function isMiddleware($method)
     {
-        if ($method === self::MIDDLEWARE_METHOD_BEFORE || $method === self::MIDDLEWARE_METHOD_AFTER)
-        {
+        if ($method === self::MIDDLEWARE_METHOD_BEFORE || $method === self::MIDDLEWARE_METHOD_AFTER) {
             return true;
         }
 
@@ -87,28 +85,27 @@ class SimpleController implements ControllerProviderInterface
     }
 
     /**
-     * Add a route to the collection
+     * Add a route to the collection.
      *
-     * @param mixed $method  the method of the route 					 (example : get|post|put|delete|match)
-     * @param mixed $class   the class and method name to call 			 (example : App\Controllers\ControllerName::postLogin)
-     * @param mixed $path    the path that silex will route to 			 (example : login/{username}/{password})
-     * @param mixed $bind    the name that should be bound to the route  (example : login)
-     *
-     * @return void
+     * @param mixed $method the method of the route 					 (example : get|post|put|delete|match)
+     * @param mixed $class  the class and method name to call 			 (example : App\Controllers\ControllerName::postLogin)
+     * @param mixed $path   the path that silex will route to 			 (example : login/{username}/{password})
+     * @param mixed $bind   the name that should be bound to the route  (example : login)
      */
     private function addRoute($method, $class, $path, $bind = null)
     {
-        if (is_null($bind))
-        {
+        if (is_null($bind)) {
             $this->collection->$method($path, $class);
-        }else {
+        } else {
             $this->collection->$method($path, $class)->bind($bind);
         }
     }
 
     /**
-     * Get the 'bind' name which is passed as a parameter to the controller method
-     * @param mixed $parameters  the method parameters to check for the bind name
+     * Get the 'bind' name which is passed as a parameter to the controller method.
+     *
+     * @param mixed $parameters the method parameters to check for the bind name
+     *
      * @return string
      */
     private function getBindValue($arguments)
@@ -117,16 +114,16 @@ class SimpleController implements ControllerProviderInterface
     }
 
     /**
-     * Get the parameter value of a specified parameter name
-     * @param mixed $parameters  the method parameters to check for the priority value
+     * Get the parameter value of a specified parameter name.
+     *
+     * @param mixed $parameters the method parameters to check for the priority value
+     *
      * @return mixed string|$default
      */
     private function getValue($name, $arguments, $default = null)
     {
-        foreach($arguments as $arg)
-        {
-            if ($arg->name === $name)
-            {
+        foreach ($arguments as $arg) {
+            if ($arg->name === $name) {
                 return $arg->getDefaultValue();
             }
         }
@@ -137,13 +134,14 @@ class SimpleController implements ControllerProviderInterface
     /**
      * Convert a string to snake case.
      *
-     * @param  string  $value
-     * @param  string  $delimiter
+     * @param string $value
+     * @param string $delimiter
+     *
      * @return string
      */
     private function getSnakeCase($value, $delimiter = '_')
     {
-        if (! ctype_lower($value)) {
+        if (!ctype_lower($value)) {
             $value = strtolower(preg_replace('/(.)(?=[A-Z])/', '$1'.$delimiter, $value));
 
             $value = preg_replace('/\s+/', '', $value);
@@ -153,11 +151,12 @@ class SimpleController implements ControllerProviderInterface
     }
 
     /**
-     * Adjust the route based on the input arguments
-	 *
-	 * @param mixed $arguments  the arguments to check for
-	 * @param mixed $path 		the path that needs to be adjusted to a route
-	 * @return string 			the route that was generated based on the input arguments and path
+     * Adjust the route based on the input arguments.
+     *
+     * @param mixed $arguments the arguments to check for
+     * @param mixed $path      the path that needs to be adjusted to a route
+     *
+     * @return string the route that was generated based on the input arguments and path
      */
     private function adjustRoute($arguments, $path)
     {
@@ -165,13 +164,11 @@ class SimpleController implements ControllerProviderInterface
         $path = ('index' === $path) ? '' : $path;
         $path = '/'.$path;
 
-        foreach($arguments as $arg)
-        {
+        foreach ($arguments as $arg) {
             $name = !is_null($arg->getClass()) ? $arg->getClass()->getName() : $arg->getName();
 
-            if (!in_array($name, $this->whitelist))
-            {
-                $path = $path . '/{' . $arg->name . '}';
+            if (!in_array($name, $this->whitelist)) {
+                $path = $path.'/{'.$arg->name.'}';
             }
         }
 

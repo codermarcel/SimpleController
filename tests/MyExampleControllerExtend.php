@@ -1,14 +1,10 @@
 <?php
 
-namespace Codermarcel\SimpleController\Tests;
+namespace Codermarcel\SimpleController\tests;
 
-use Silex\Application;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\Request;
 use Codermarcel\SimpleController\SimpleController;
-use Codermarcel\SimpleController\Tests\BaseController;
 
 class MyExampleControllerExtend extends SimpleController
 {
-	use BaseController;
+    use BaseController;
 }
