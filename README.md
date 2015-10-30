@@ -144,6 +144,8 @@ $app->mount('/', new App\Controllers\MyExampleControllerExtended());
 ```
 
 ```php
+use Codermarcel\SimpleController\SimpleController;;
+
 class MyExampleControllerExtended extends SimpleController
 {
 	/**
@@ -173,6 +175,8 @@ $app->mount('/user', new App\Controllers\MyExampleControllerExtended());
 ```
 
 ```php
+use Codermarcel\SimpleController\SimpleController;;
+
 class MyExampleControllerExtended extends SimpleController
 {
 	/**
