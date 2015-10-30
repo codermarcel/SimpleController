@@ -83,6 +83,8 @@ The following methods are available :
 - options
 - match
 
+#### below are some examples
+
 ```php
 class MyExampleControllerRaw
 {
@@ -218,7 +220,7 @@ class MyExampleControllerRaw
 
 You can also ask for the current Request and Application objects like this:</br>
 
-**Note** for the Application and Request objects, SimpleController does the injection based on the type hinting and not on the variable name! </br>
+**Note** silex does the injection based on the type hinting and not on the variable name! </br>
 
 
 ```php
@@ -274,7 +276,7 @@ Route middlewares are triggered when their associated route is matched." </br>
 </br>
 For more information about middlewares, please take a look at the offical [silex documentation] (http://silex.sensiolabs.org/doc/middlewares.html#middlewares) </br>
 
-**Note** like always, you can typehint the Request and Response object and **silex** will inject them for you.
+**Note** You can typehint the Request, Response or Application object and **silex** will inject them for you.
 
 ```php
 class MyExampleControllerRaw
@@ -300,7 +302,7 @@ class MyExampleControllerRaw
 	 *
 	 * {@link http://silex.sensiolabs.org/doc/middlewares.html#after-middleware}
 	 */
-	public function afterSomeRandomNameThatDoesntMatter(Request $request, Response $response)
+	public function afterSomeRandomNameThatDoesntMatter(Request $request, Response $response, Application $app)
 	{
 		if ($request->getRequestUri() === '/after-middleware')
 		{
@@ -314,10 +316,3 @@ class MyExampleControllerRaw
 SimpleController was inspired by </br>
 https://gist.github.com/igorw/4524636 </br>
 And http://laravel.com/docs/5.1/controllers#implicit-controllers </br>
-
-## References:
-
-	[1] http://silex.sensiolabs.org/doc/usage.html#other-methods
-	[2] http://silex.sensiolabs.org/doc/middlewares.html#middlewares
-    [3] http://silex.sensiolabs.org/doc/usage.html#route-variables
-    [4] http://silex.sensiolabs.org/doc/usage.html#named-routes
