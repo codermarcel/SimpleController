@@ -270,7 +270,7 @@ class MyExampleControllerRaw
 ## Middleware
 
 "Silex allows you to run code, that changes the default Silex behavior, at different stages during the handling of a request through middlewares: </br>
-</br>
+
 […] </br>
 Route middlewares are triggered when their associated route is matched." </br>
 </br>
