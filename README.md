@@ -65,7 +65,9 @@ class MyExampleControllerRaw
 }
 ```
 
-**Mount the route** (use the full namespace name for your controller class)
+### Mount the route
+
+Note : use the full namespace name for your controller class
 
 ```php
 $app->mount('/', new Codermarcel\SimpleController\SimpleController('App\Controllers\MyExampleControllerRaw'));
@@ -73,7 +75,7 @@ $app->mount('/', new Codermarcel\SimpleController\SimpleController('App\Controll
 
 #Usage
 
-*HTTP methods*
+## HTTP methods
 
 The method names should begin with the HTTP verb they respond to followed by the title case version of the URI.
 The following methods are available :
@@ -156,7 +158,7 @@ class MyExampleControllerRaw
 ```
 
 
-**Route variables**
+### Route variables
 
 You can define variable parts in a route like this:
 
@@ -166,7 +168,7 @@ class MyExampleControllerRaw
 {
 	/**
 	 * Post with two parameters example
-	 * Routes to /login{username}/{password}
+	 * Responds to request to POST /login{username}/{password}
 	 */
 	public function postLogin($username, $password)
 	{
@@ -175,7 +177,7 @@ class MyExampleControllerRaw
 }
 ```
 
-**Request and Application injection**
+### Request and Application injection
 
 You can also ask for the current Request and Application objects like this:
 Note for the Application and Request objects, SimpleController does the injection based on the type hinting and not on the variable name!
@@ -189,7 +191,7 @@ class MyExampleControllerRaw
 
 	/**
 	 * Example of Parameter injection
-	 * Routes to /injection
+	 * Responds to request to GET /injection
 	 */
 	public function getInjection(Application $app, Request $request)
 	{
@@ -200,7 +202,7 @@ class MyExampleControllerRaw
 ```
 
 
-**Named routes**
+### Named routes
 
 You can bind a route name to your routes by using the $bind parameter in your routes like so:
 
@@ -213,12 +215,13 @@ class MyExampleControllerRaw
 
 	/**
 	 * Example of binding a name to a route
-	 * Routes to /bind-example
+	 * Responds to request to GET /bind-example
 	 *
 	 * {@link http://silex.sensiolabs.org/doc/providers/url_generator.html#usage}
 	 */
 	public function getBindExample(Application $app, $bind = 'bind_example')
 	{
+		//Example usage of the bind_example route
 		//You can use ABSOLUTE_URL or ABSOLUTE_PATH
 		return new Response($app['url_generator']->generate('bind_example', array(), UrlGeneratorInterface::ABSOLUTE_PATH));
 	}
@@ -226,27 +229,45 @@ class MyExampleControllerRaw
 ```
 
 
-*Middleware*
+## Middleware
 
-You can bind a route name to your routes by using the $bind parameter in your routes like so:
+"Silex allows you to run code, that changes the default Silex behavior, at different stages during the handling of a request through middlewares:
 
+[…]
+Route middlewares are triggered when their associated route is matched."
+
+For more information about middleware, please go to the [silex website] (http://silex.sensiolabs.org/doc/middlewares.html#middlewares)
 
 ```php
 class MyExampleControllerRaw
 {
-	use Silex\Application;
-	use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+	use Symfony\Component\HttpFoundation\Response;
+	use Symfony\Component\HttpFoundation\Request;
 
 	/**
-	 * Example of binding a name to a route
-	 * Routes to /bind-example
+	 * Before middleware example
 	 *
-	 * {@link http://silex.sensiolabs.org/doc/providers/url_generator.html#usage}
+	 * {@link http://silex.sensiolabs.org/doc/middlewares.html#before-middleware}
 	 */
-	public function getBindExample(Application $app, $bind = 'bind_example')
+	public function beforeMiddleware(Request $request)
 	{
-		//You can use ABSOLUTE_URL or ABSOLUTE_PATH
-		return new Response($app['url_generator']->generate('bind_example', array(), UrlGeneratorInterface::ABSOLUTE_PATH));
+		if ($request->getRequestUri() === '/before-middleware')
+		{
+			return new Response('YOU SHALL NOT PASS');
+		}
+	}
+
+	/**
+	 * After middleware example
+	 *
+	 * {@link http://silex.sensiolabs.org/doc/middlewares.html#after-middleware}
+	 */
+	public function afterSomeRandomNameThatDoesntMatter(Request $request, Response $response)
+	{
+		if ($request->getRequestUri() === '/after-middleware')
+		{
+			return new Response($response->getContent() . ' | after-middleware content');
+		}
 	}
 }
 ```
@@ -254,6 +275,6 @@ class MyExampleControllerRaw
 References:
 
 	[1] http://silex.sensiolabs.org/doc/usage.html#other-methods
-    [2] http://silex.sensiolabs.org/doc/usage.html#route-variables
+	[2] http://silex.sensiolabs.org/doc/middlewares.html#middlewares
     [3] http://silex.sensiolabs.org/doc/usage.html#route-variables
     [4] http://silex.sensiolabs.org/doc/usage.html#named-routes
