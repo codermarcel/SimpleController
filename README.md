@@ -144,7 +144,7 @@ $app->mount('/', new App\Controllers\MyExampleControllerExtended());
 ```
 
 ```php
-class MyExampleControllerRaw
+class MyExampleControllerExtended extends SimpleController
 {
 	/**
 	 * Post with two parameters example
@@ -173,7 +173,7 @@ $app->mount('/user', new App\Controllers\MyExampleControllerExtended());
 ```
 
 ```php
-class MyExampleControllerRaw
+class MyExampleControllerExtended extends SimpleController
 {
 	/**
 	 * Post with two parameters example
