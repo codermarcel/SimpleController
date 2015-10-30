@@ -2,8 +2,8 @@ SimpleController
 ======
 
 Convenient and simple silex controller using reflection
-Inspired by https://gist.github.com/igorw/4524636
-And http://laravel.com/docs/5.1/controllers#implicit-controllers
+ Inspired by https://gist.github.com/igorw/4524636
+ And http://laravel.com/docs/5.1/controllers#implicit-controllers
 
 Introduction
 ======
