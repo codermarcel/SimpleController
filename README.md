@@ -180,7 +180,7 @@ class MyExampleControllerRaw
 ### Request and Application injection
 
 You can also ask for the current Request and Application objects like this:</br>
-Note : for the Application and Request objects, SimpleController does the injection based on the type hinting and not on the variable name! </br>
+**Note : for the Application and Request objects, SimpleController does the injection based on the type hinting and not on the variable name!** </br>
 
 
 ```php
