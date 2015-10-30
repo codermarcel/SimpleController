@@ -203,6 +203,8 @@ class MyExampleControllerExtended extends SimpleController
 
 You can define variable parts in a route like this:
 
+**Note** default route values are currently not supported but might be added in a later version.
+
 ```php
 class MyExampleControllerRaw
 {
@@ -310,6 +312,7 @@ class MyExampleControllerRaw
 	}
 }
 ```
+
 
 ## Credits
 SimpleController was inspired by </br>
