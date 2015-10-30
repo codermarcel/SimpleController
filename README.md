@@ -133,9 +133,8 @@ class MyExampleControllerRaw
 
 ### Organizing Controllers
 
-"When your application starts to define too many controllers, you might want to group them logically:"
-
-"mount() prefixes all routes with the given prefix and merges them into the main Application. So, / will map to the main home page, /blog/ to the blog home page, and /forum/ to the forum home page."
+> When your application starts to define too many controllers, you might want to group them logically:
+> mount() prefixes all routes with the given prefix and merges them into the main Application. So, / will map to the main home page, /blog/ to the blog home page, and /forum/ to the forum home page.
 
 For more information on Organizing Controllers, please take a look at the offical [silex documentation] (http://silex.sensiolabs.org/doc/organizing_controllers.html#organizing-controllers)
 
@@ -269,9 +268,9 @@ class MyExampleControllerRaw
 
 ## Middleware
 
-< Silex allows you to run code, that changes the default Silex behavior, at different stages during the handling of a request through middlewares: </br>
-< […] </br>
-< Route middlewares are triggered when their associated route is matched. </br>
+> Silex allows you to run code, that changes the default Silex behavior, at different stages during the handling of a request through middlewares: </br>
+> […] </br>
+> Route middlewares are triggered when their associated route is matched. </br>
 
 For more information about middlewares, please take a look at the offical [silex documentation] (http://silex.sensiolabs.org/doc/middlewares.html#middlewares) </br>
 
