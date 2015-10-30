@@ -217,6 +217,7 @@ class MyExampleControllerRaw
 ### Request and Application injection
 
 You can also ask for the current Request and Application objects like this:</br>
+
 **Note** for the Application and Request objects, SimpleController does the injection based on the type hinting and not on the variable name! </br>
 
 
@@ -231,8 +232,7 @@ class MyExampleControllerRaw
 	 */
 	public function getInjection(Application $app, Request $request)
 	{
-		$app['injection_test'] = true;
-		return new Response($request->getRequestUri());
+		//
 	}
 }
 ```
@@ -242,6 +242,7 @@ class MyExampleControllerRaw
 
 You can bind a route name to your routes by using the $bind parameter in your routes like this:
 
+For more information on named route and the UrlGeneratorServiceProvider please take a look at the [offical silex documentation] (http://silex.sensiolabs.org/doc/providers/url_generator.html#urlgeneratorserviceprovider)
 
 ```php
 class MyExampleControllerRaw
