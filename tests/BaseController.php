@@ -66,7 +66,7 @@ trait BaseController
 	}
 
 	/**
-	 * Responds to request to ANYTHING on /test
+	 * Responds to request to MATCH /test
 	 */
 	public function matchTest()
 	{

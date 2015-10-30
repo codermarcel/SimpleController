@@ -88,60 +88,68 @@ The following methods are available :
 ```php
 class MyExampleControllerRaw
 {
-	use Symfony\Component\HttpFoundation\Response;
-
 	/**
-	 * Index example
-	 * Routes to /
+	 * Responds to request to GET /
 	 */
 	public function getIndex()
 	{
-		return new Response('INDEX');
+		//
 	}
 
 	/**
-	 * GET example
-	 * Routes to /test
+	 * Responds to request to GET /test
 	 */
 	public function getTest()
 	{
-		return new Response('GET');
+		//
 	}
 
 	/**
-	 * Post example
-	 * Routes to /test
+	 * Responds to request to POST /test
 	 */
 	public function postTest()
 	{
-		return new Response('POST');
+		//
 	}
 
 	/**
-	 * Put example
-	 * Routes to /test
+	 * Responds to request to PUT /test
 	 */
 	public function putTest()
 	{
-		return new Response('PUT');
+		//
 	}
 
 	/**
-	 * Delete example
-	 * Routes to /test
+	 * Responds to request to DELETE /test
 	 */
 	public function deleteTest()
 	{
-		return new Response('DELETE');
+		//
 	}
 
 	/**
-	 * Match example
-	 * Routes to /test
+	 * Responds to request to PATCH /test
+	 */
+	public function patchTest()
+	{
+		//
+	}
+
+	/**
+	 * Responds to request to OPTIONS /test
+	 */
+	public function optionsTest()
+	{
+		//
+	}
+
+	/**
+	 * Responds to request to ANYTHING on /test
 	 */
 	public function matchTest()
 	{
-		return new Response('MATCH');
+		//
 	}
 }
 ```

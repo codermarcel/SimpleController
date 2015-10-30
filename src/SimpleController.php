@@ -50,7 +50,7 @@ class SimpleController implements ControllerProviderInterface
         {
             $methodName = $method->getName();
 
-            if (!preg_match('/^(get|post|put|delete|match|before|after)(.+)$/', $methodName, $matches)) {
+            if (!preg_match('/^(get|post|put|delete|patch|options|match|before|after)(.+)$/', $methodName, $matches)) {
                 continue;
             }
 
