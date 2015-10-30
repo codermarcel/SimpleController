@@ -72,7 +72,7 @@ $app->mount('/', new Codermarcel\SimpleController\SimpleController('App\Controll
 
 #Usage
 
-**HTTP methods**
+*HTTP methods*
 
 The method names should begin with the HTTP verb they respond to followed by the title case version of the URI.
 The following methods are available :
@@ -200,6 +200,32 @@ class MyExampleControllerRaw
 
 
 **Named routes**
+
+You can bind a route name to your routes by using the $bind parameter in your routes like so:
+
+
+```php
+class MyExampleControllerRaw
+{
+	use Silex\Application;
+	use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+
+	/**
+	 * Example of binding a name to a route
+	 * Routes to /bind-example
+	 *
+	 * {@link http://silex.sensiolabs.org/doc/providers/url_generator.html#usage}
+	 */
+	public function getBindExample(Application $app, $bind = 'bind_example')
+	{
+		//You can use ABSOLUTE_URL or ABSOLUTE_PATH
+		return new Response($app['url_generator']->generate('bind_example', array(), UrlGeneratorInterface::ABSOLUTE_PATH));
+	}
+}
+```
+
+
+*Middleware*
 
 You can bind a route name to your routes by using the $bind parameter in your routes like so:
 
