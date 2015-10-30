@@ -1,6 +1,7 @@
 #SimpleController
 
-SimpleController is a convenient reflection based controller for the [php micro-framework silex] (http://silex.sensiolabs.org/)
+SimpleController is a convenient reflection based controller for the [php micro-framework silex]
+(http://silex.sensiolabs.org/)
 SimpleController makes it easy for you to use controllers in your silex applications and matches your controller methods to routes automatically</br>
 
 
@@ -24,7 +25,7 @@ use Codermarcel\SimpleController\SimpleController;;
 class MyExampleControllerExtended extends SimpleController
 {
 	/**
-	 * Index example
+	 * Responds to requests to GET /
 	 */
 	public function getIndex()
 	{
@@ -43,11 +44,14 @@ $app->mount('/', new App\Controllers\MyExampleControllerExtended());
 
 ### Using a raw class
 
+If you don't want to extend the SimpleController class, then you can use a raw class as well.
+
+
 ```php
 class MyExampleControllerRaw
 {
 	/**
-	 * Index example
+	 * Responds to requests to GET /
 	 */
 	public function getIndex()
 	{
@@ -68,7 +72,7 @@ $app->mount('/', new Codermarcel\SimpleController\SimpleController('App\Controll
 
 ## HTTP methods
 
-The method names should begin with the HTTP verb they respond to followed by the title case version of the URI. </br>
+The method names should begin with the HTTP verb they respond to followed by the route name. </br>
 The following methods are available :
 
 - get
@@ -83,6 +87,67 @@ The following methods are available :
 class MyExampleControllerRaw
 {
 	/**
+	 * Responds to requests to GET /
+	 */
+	public function getIndex()
+	{
+		//
+	}
+
+	/**
+	 * Responds to requests to GET /test
+	 */
+	public function getTest()
+	{
+		//
+	}
+
+	/**
+     * Responds to requests to GET /show/{id}
+     */
+    public function getShow($id)
+    {
+        //
+    }
+
+    /**
+     * Responds to requests to GET /admin-profile
+     */
+    public function getAdminProfile()
+    {
+        //
+    }
+
+    /**
+     * Responds to requests to POST /profile
+     */
+    public function postProfile()
+    {
+        //
+    }
+
+}
+```
+
+### Organizing Controllers
+
+"When your application starts to define too many controllers, you might want to group them logically:"
+
+"mount() prefixes all routes with the given prefix and merges them into the main Application. So, / will map to the main home page, /blog/ to the blog home page, and /forum/ to the forum home page."
+
+For more information on Organizing Controllers, please take a look at the offical [silex documentation] (http://silex.sensiolabs.org/doc/organizing_controllers.html#organizing-controllers)
+
+#### Example 1
+
+```php
+$app->mount('/', new App\Controllers\MyExampleControllerExtended());
+```
+
+```php
+class MyExampleControllerRaw
+{
+	/**
+	 * Post with two parameters example
 	 * Responds to request to GET /
 	 */
 	public function getIndex()
@@ -91,57 +156,39 @@ class MyExampleControllerRaw
 	}
 
 	/**
-	 * Responds to request to GET /test
+	 * Post with two parameters example
+	 * Responds to request to GET /login-page
 	 */
-	public function getTest()
+	public function getLoginPage()
+	{
+		//
+	}
+}
+```
+
+#### Example 2
+
+```php
+$app->mount('/user', new App\Controllers\MyExampleControllerExtended());
+```
+
+```php
+class MyExampleControllerRaw
+{
+	/**
+	 * Post with two parameters example
+	 * Responds to request to GET /user/
+	 */
+	public function getIndex()
 	{
 		//
 	}
 
 	/**
-	 * Responds to request to POST /test
+	 * Post with two parameters example
+	 * Responds to request to GET /user/home-page
 	 */
-	public function postTest()
-	{
-		//
-	}
-
-	/**
-	 * Responds to request to PUT /test
-	 */
-	public function putTest()
-	{
-		//
-	}
-
-	/**
-	 * Responds to request to DELETE /test
-	 */
-	public function deleteTest()
-	{
-		//
-	}
-
-	/**
-	 * Responds to request to PATCH /test
-	 */
-	public function patchTest()
-	{
-		//
-	}
-
-	/**
-	 * Responds to request to OPTIONS /test
-	 */
-	public function optionsTest()
-	{
-		//
-	}
-
-	/**
-	 * Responds to request to MATCH /test
-	 */
-	public function matchTest()
+	public function getHomePage()
 	{
 		//
 	}
@@ -149,10 +196,10 @@ class MyExampleControllerRaw
 ```
 
 
+
 ### Route variables
 
 You can define variable parts in a route like this:
-
 
 ```php
 class MyExampleControllerRaw
@@ -182,7 +229,7 @@ class MyExampleControllerRaw
 
 	/**
 	 * Example of Parameter injection
-	 * Responds to request to GET /injection
+	 * Responds to requests to GET /injection
 	 */
 	public function getInjection(Application $app, Request $request)
 	{
@@ -206,7 +253,7 @@ class MyExampleControllerRaw
 
 	/**
 	 * Example of binding a name to a route
-	 * Responds to request to GET /bind-example
+	 * Responds to requests to GET /bind-example
 	 *
 	 * {@link http://silex.sensiolabs.org/doc/providers/url_generator.html#usage}
 	 */
