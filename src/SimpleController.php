@@ -87,9 +87,9 @@ class SimpleController implements ControllerProviderInterface
     /**
      * Add a route to the collection.
      *
-     * @param mixed $method the method of the route 					 (example : get|post|put|delete|match)
-     * @param mixed $class  the class and method name to call 			 (example : App\Controllers\ControllerName::postLogin)
-     * @param mixed $path   the path that silex will route to 			 (example : login/{username}/{password})
+     * @param mixed $method the method of the route 					          (example : get|post|put|delete|match)
+     * @param mixed $class  the class and method name to call 			    (example : App\Controllers\ControllerName::postLogin)
+     * @param mixed $path   the path that silex will route to 			    (example : login/{username}/{password})
      * @param mixed $bind   the name that should be bound to the route  (example : login)
      */
     private function addRoute($method, $class, $path, $bind = null)
