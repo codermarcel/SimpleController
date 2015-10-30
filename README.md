@@ -1,9 +1,12 @@
-# SimpleController
+SimpleController
+======
+
 Convenient and simple silex controller using reflection
 Inspired by https://gist.github.com/igorw/4524636
 And http://laravel.com/docs/5.1/controllers#implicit-controllers
 
-# Introduction
+Introduction
+======
 
 SimpleController is a convenient reflection based controller that
 matches your controller methods to routes take a look at
