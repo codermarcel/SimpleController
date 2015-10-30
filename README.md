@@ -205,7 +205,7 @@ You can define variable parts in a route like this:
 class MyExampleControllerRaw
 {
 	/**
-	 * Responds to request to POST /login{username}/{password}
+	 * Responds to requests to POST /login{username}/{password}
 	 */
 	public function postLogin($username, $password)
 	{
@@ -272,7 +272,9 @@ class MyExampleControllerRaw
 […] </br>
 Route middlewares are triggered when their associated route is matched." </br>
 </br>
-For more information about middleware, please go to the [silex website] (http://silex.sensiolabs.org/doc/middlewares.html#middlewares) </br>
+For more information about middlewares, please take a look at the offical [silex documentation] (http://silex.sensiolabs.org/doc/middlewares.html#middlewares) </br>
+
+**Note** like always, you can typehint the Request and Response object and **silex** will inject them for you.
 
 ```php
 class MyExampleControllerRaw
