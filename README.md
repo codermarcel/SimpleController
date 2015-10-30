@@ -133,7 +133,7 @@ class MyExampleControllerRaw
 
 ### Organizing Controllers
 
-> When your application starts to define too many controllers, you might want to group them logically:
+> When your application starts to define too many controllers, you might want to group them logically: </br>
 > mount() prefixes all routes with the given prefix and merges them into the main Application. So, / will map to the main home page, /blog/ to the blog home page, and /forum/ to the forum home page.
 
 For more information on Organizing Controllers, please take a look at the offical [silex documentation] (http://silex.sensiolabs.org/doc/organizing_controllers.html#organizing-controllers)
