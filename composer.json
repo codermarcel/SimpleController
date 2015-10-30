@@ -5,10 +5,10 @@
 	"keywords": ["silex", "controller"],
     "license": "MIT",
 	"authors": [
-		{
+	    {
             "name": "Marcel",
             "email": "codermarcel@gmail.com"
-		}
+	    }
     ],
     "autoload": {
         "psr-4": {
