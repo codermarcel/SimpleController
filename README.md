@@ -1,8 +1,8 @@
 #SimpleController
 
- Convenient and simple silex controller using reflection </br>
- Inspired by https://gist.github.com/igorw/4524636 </br>
- And http://laravel.com/docs/5.1/controllers#implicit-controllers </br>
+Convenient and simple silex controller using reflection </br>
+Inspired by https://gist.github.com/igorw/4524636 </br>
+And http://laravel.com/docs/5.1/controllers#implicit-controllers </br>
 
 #Introduction
 
