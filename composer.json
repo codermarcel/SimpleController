@@ -1,19 +1,19 @@
 {
     "name": "codermarcel/simple-controller",
 	"type": "package",
-	"description": "Convinient and simple silex controller using reflection",
+	"description": "Convenient and simple silex controller using reflection",
 	"keywords": ["silex", "controller"],
     "license": "MIT",
 	"authors": [
-		{
-			"name": "Marcel",
+	    {
+        	"name": "Marcel",
             "email": "codermarcel@gmail.com"
-		}
+	    }
     ],
     "autoload": {
-        "psr-0": {
-            "Codermarcel\\SimpleController": "src",
-            "Codermarcel\\SimpleController\\Tests\\": "tests"
+        "psr-4": {
+            "Codermarcel\\SimpleController\\": "src/",
+            "Codermarcel\\SimpleController\\Tests\\": "tests/"
         }
     },
 	"require": {

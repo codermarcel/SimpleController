@@ -9,6 +9,17 @@ use Silex\WebTestCase;
 abstract class BaseTests extends WebTestCase
 {
 	/**
+	 * Test the index
+	 */
+	public function testIndex()
+	{
+		$client = $this->createClient();
+		$crawler = $client->request('GET', '/');
+		$result = $client->getResponse()->getContent();
+		$this->assertEquals('INDEX', $result);
+	}
+
+	/**
 	 * Test the GET method
 	 */
 	public function testGetMethod()
@@ -53,6 +64,28 @@ abstract class BaseTests extends WebTestCase
 	}
 
 	/**
+	 * Test the PATCH method
+	 */
+	public function testPatchMethod()
+	{
+		$client = $this->createClient();
+		$crawler = $client->request('PATCH', '/test');
+		$result = $client->getResponse()->getContent();
+		$this->assertEquals('PATCH', $result);
+	}
+
+	/**
+	 * Test the OPTIONS method
+	 */
+	public function testOptionsMethod()
+	{
+		$client = $this->createClient();
+		$crawler = $client->request('OPTIONS', '/test');
+		$result = $client->getResponse()->getContent();
+		$this->assertEquals('OPTIONS', $result);
+	}
+
+	/**
 	 * Test the MATCH method
 	 */
 	public function testMatchMethod()
@@ -61,17 +94,6 @@ abstract class BaseTests extends WebTestCase
 		$crawler = $client->request('MATCH', '/test');
 		$result = $client->getResponse()->getContent();
 		$this->assertEquals('MATCH', $result);
-	}
-
-	/**
-	 * Test the index
-	 */
-	public function testIndex()
-	{
-		$client = $this->createClient();
-		$crawler = $client->request('GET', '/');
-		$result = $client->getResponse()->getContent();
-		$this->assertEquals('INDEX', $result);
 	}
 
 	/**
@@ -96,6 +118,21 @@ abstract class BaseTests extends WebTestCase
 		$crawler = $client->request('POST', "/login/$username/$password");
 		$result = $client->getResponse()->getContent();
 		$this->assertEquals(sprintf('Trying to log in with username: %s and password: %s', $username, $password), $result);
+	}
+
+	/**
+	 * Test route with two parameters
+	 */
+	public function testInjection()
+	{
+		$client = $this->createClient();
+		$crawler = $client->request('GET', '/injection');
+		$result = $client->getResponse()->getContent();
+
+		$this->assertTrue($this->app['injection_test']);
+		$this->assertEquals('/injection', $result);
+
+		$this->app['injection_test'] = null;
 	}
 
 	/**

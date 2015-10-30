@@ -5,7 +5,7 @@ use Silex\Application;
 use Silex\ControllerProviderInterface;
 
 /**
- * Convinient and simple silex controller using reflection
+ * Convenient and simple silex controller using reflection
  * Inspired by -> {@link https://gist.github.com/igorw/4524636}
  */
 class SimpleController implements ControllerProviderInterface
@@ -50,7 +50,7 @@ class SimpleController implements ControllerProviderInterface
         {
             $methodName = $method->getName();
 
-            if (!preg_match('/^(get|post|put|delete|match|before|after)(.+)$/', $methodName, $matches)) {
+            if (!preg_match('/^(get|post|put|delete|patch|options|match|before|after)(.+)$/', $methodName, $matches)) {
                 continue;
             }
 
