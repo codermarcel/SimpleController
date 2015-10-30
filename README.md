@@ -1,9 +1,5 @@
 #SimpleController
 
-Convenient and simple silex controller using reflection </br>
-
-#Introduction
-
 SimpleController is a convenient reflection based controller that
 matches your controller methods to routes. </br>
 
