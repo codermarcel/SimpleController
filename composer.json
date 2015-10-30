@@ -5,14 +5,18 @@
 	"keywords": ["silex", "controller"],
     "license": "MIT",
 	"authors": [
-	    {
-        	"name": "Marcel",
+		{
+            "name": "Marcel",
             "email": "codermarcel@gmail.com"
-	    }
+		}
     ],
     "autoload": {
         "psr-4": {
             "Codermarcel\\SimpleController\\": "src/",
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
             "Codermarcel\\SimpleController\\Tests\\": "tests/"
         }
     },
