@@ -1,0 +1,31 @@
+{
+    "name": "codermarcel/simple-controller",
+	"type": "package",
+	"description": "Convenient and simple silex controller using reflection",
+	"keywords": ["silex", "controller"],
+    "license": "MIT",
+	"authors": [
+		{
+            "name": "Marcel",
+            "email": "codermarcel@gmail.com"
+		}
+    ],
+    "autoload": {
+        "psr-4": {
+            "Codermarcel\\SimpleController\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Codermarcel\\SimpleController\\Tests\\": "tests/"
+        }
+    },
+	"require": {
+        "silex/silex": "~1.3"
+    },
+	"require-dev": {
+        "phpunit/phpunit": "5.0.*",
+        "symfony/browser-kit": "^2.7",
+        "symfony/css-selector": "^2.7"
+    }
+}
